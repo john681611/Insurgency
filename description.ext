@@ -1,0 +1,64 @@
+#include "Modules\outlw_magRepack\MagRepack_config.hpp"
+#include "Modules\CHVD\dialog.hpp"
+briefingName = "Insurgency 0.0.1";
+onLoadName = "Insurgency 0.0.1";
+overviewText = "Insurgency 0.0.1";
+author = "INF_Mike64";
+onLoadMission = "Insurgency 0.0.1";
+// loadScreen = "resistance_ingame_logo.paa";
+disabledAI = 1;
+enableDebugConsole = 1;
+
+respawn = 3;
+respawnDelay = 5;
+respawnVehicleDelay = 30.000002;
+respawnTemplates[] = {"MenuPosition"};
+respawnOnStart = 0;
+
+
+wreckManagerMode = 3;
+wreckLimit = 25;
+wreckRemovalMinTime = 600;
+wreckRemovalMaxTime = 1200;
+corpseManagerMode = 1;
+corpseLimit = 100;
+corpseRemovalMinTime = 600;
+minPlayerDistance = 500;
+
+// cba_settings_hasSettingsFile = 1;
+
+class Header
+{
+	gameType = CTI;
+	minPlayers = 1;
+	maxPlayers = 33;
+};
+
+class CfgFunctions
+{
+	#include "Modules\CHVD\CfgFunctions.hpp"
+	#include "Functions\CfgFunctions.hpp"
+};
+
+class CfgDebriefing
+{
+	// Used when all players die in MP
+	class endLose
+	{
+		title = "Too Many Hostages died";
+		description = "We don't get paid for bringing back the bodies.";
+		picture = "KIA";
+	};
+};
+
+class Params
+{
+	class RESETMAPCACHE
+	{
+		title = "Reset Map Cache"; // Param name visible in the list
+		values[] = {false,true}; // Values; must be integers; has to have the same number of elements as 'texts'
+		texts[] = {"False","True"}; // Description of each selectable item
+		default = false; // Default value; must be listed in 'values' array, otherwise 0 is used
+               // Default values that are not whole numbers do not work. Param will default to 0 (or 1 if defined)
+	};
+};
