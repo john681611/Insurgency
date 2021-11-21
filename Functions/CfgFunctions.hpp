@@ -17,6 +17,7 @@ class IA
 		class teleport_add_action{};
 		class spawnSupplies_add_action{};
 		class free_add_action{};
+		class free_unit{};
 		class togglePost_add_action{};
 		class togglePost{};
 		class createTunnel{};

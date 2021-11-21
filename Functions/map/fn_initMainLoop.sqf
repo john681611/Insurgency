@@ -1,7 +1,7 @@
 private _loopCount = 1;
 listeners = [];
 publicVariable "listeners";
-while {{captive _x} count hostages > 0} do {
+while {{captive (_x select 0)} count hostages > 0} do {
 	listeners = listeners select {alive (_x select 0)  && {!(isObjectHidden (_x select 0))}};
 	publicVariable "listeners";
 	if(_loopCount == 1) then {

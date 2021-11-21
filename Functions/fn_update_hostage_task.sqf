@@ -1,4 +1,4 @@
-_message = format ["Recover %1 Hostages", {captive _x} count hostages];
+_message = format ["Recover %1 Hostages", {captive (_x select 0)} count hostages];
 [
 	"TK1",
 	[

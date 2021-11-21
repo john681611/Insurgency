@@ -4,7 +4,7 @@ if(_mkr in subObjectives) exitWith {};
 
 private _subObjMkr = createMarker [format ["%1-subObj", _mkr], getMarkerPos _mkr];
 _subObjMkr setMarkerColorLocal "colorOPFOR";
-_subObjMkr setMarkerAlphaLocal 0;
+_subObjMkr setMarkerAlphaLocal 1;
 
 if(count hostages < 5) exitWith {
 	_grp = createGroup [civilian , false];
@@ -20,8 +20,8 @@ if(count hostages < 5) exitWith {
 	_unit addEventHandler ["Killed", {
 		call TR_fnc_update_hostage_task;
 	}];
-	hostages pushBack _unit;
-	subObjectives set [_mkr, [[_unit], _subObjMkr]];
+	hostages pushBack [_unit,[]];
+	publicVariable "hostages";
 	[units _grp] remoteExec ["TR_fnc_addToAllCurators", 2];
 	if((nearestBuilding _unit) distance _unit > 50) then
 	{
@@ -56,6 +56,7 @@ if(random 100 < 20) exitWith {
 	_subObjMkr setMarkerType "o_Ordnance";
 	_veh = [_mkr, 50,(["VC", "Supply"] call TR_fnc_getUnits), true] call TR_fnc_spawnVehicle;
 	_veh addEventHandler ["Killed", {
+		params ["_unit", "_killer", "_instigator", "_useEffects"];
 		"Bo_GBU12_LGB" createVehicle (getpos _unit);
 	}];
 	subObjectives set [_mkr, [(crew _veh) + [_veh], _subObjMkr]];

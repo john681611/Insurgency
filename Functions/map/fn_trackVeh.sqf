@@ -5,10 +5,7 @@ _name = getText (configFile >> "CfgVehicles" >> typeOf _vehName >> "displayName"
 _mkr = createMarker [format["%1", _veh], getPos _veh];
 _mkr setMarkerColorLocal "colorBLUFOR";
 _mkr setMarkerTypeLocal "loc_LetterV";
-
-if(_veh isKindOf "ReammoBox_F") then {
-	_mkr setMarkerTypeLocal "loc_Box";	
-};
+[[player]] remoteExec ["TR_fnc_addToAllCurators", 2];
 
 sleep 3;
 _veh allowDamage true;
@@ -42,14 +39,3 @@ while {alive _veh} do {
 	sleep 1; 
 };
 deleteMarker _mkr;
-
-
-//Spawn Wreck Container
-_act = _veh addAction ["Pack wreck",{
-	params ["_target", "_caller", "_actionId", "_arguments"];
-	_name = getText (configFile >> "CfgVehicles" >> typeOf _target >> "displayName");
-	_box = "vn_us_komex_medium_02" createVehicle (getPos _target);
-	_target setPos [0,0,0];
-	_box setVariable ["respawnVehicle", _target];
-	call{_box spawn TR_fnc_trackVeh;};
-}, nil, 1.5, true, true, '', "true", 20];

@@ -6,6 +6,7 @@ noise = [20, "ColorOpfor", []] call TR_fnc_setRandomZonesTo;
 
 factions = ["VC"];
 hostages = [];
+publicVariable "hostages";
 savedhostagesCount = 0;
 publicVariable "savedhostagesCount";
 subObjectives = createHashMap;
