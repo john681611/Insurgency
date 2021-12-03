@@ -19,3 +19,21 @@ skipTime _startTime;
 addMissionEventHandler ["HandleDisconnect",{deleteMarker format["%1",(_this select 2)]; deletevehicle (_this select 0)}];
 hint "Finished setting up the map";
 
+
+respawnTime = 5;
+publicVariable "respawnTime";
+addMissionEventHandler ["EntityKilled",{ 
+ params ["_killedUnit","_killer","_triggerMan"]; 
+	if ((_killedUnit call BIS_fnc_objectSide) isEqualTo civilian AND side _triggerMan isEqualTo west) then { 
+		_killedUnit globalChat "Each time an innocent person is killed it gets harder to bring in reinforcements";
+		respawnTime = respawnTime + 5;
+		publicVariable "respawnTime";
+	}; 
+}];
+
+while {true} do {
+	sleep 3600;
+	respawnTime = 5;
+	publicVariable "respawnTime";
+};
+
