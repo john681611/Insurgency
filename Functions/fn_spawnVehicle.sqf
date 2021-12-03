@@ -1,4 +1,4 @@
-params ["_AOMarker", "_AORad", "_vehType", "_defend"];
+	params ["_AOMarker", "_AORad", "_vehType", "_defend" , ["_side", east]];
 
 private _AOpos = getMarkerPos _AOMarker;
 private _randomPos = [];
@@ -8,9 +8,9 @@ if(_defend) then {
 	_randomPos = [_AOpos, _AORad + 100, _AORad + 300 , 0, 0, 0.4, 0, []] call BIS_fnc_findSafePos;
 };
 private _veh = createVehicle [_vehType, _randomPos, [], 5, "NONE"];
-private _grp = createGroup east;
+private _grp = createGroup _side;
 createVehicleCrew _veh;
-(crew _veh) join _grp;
+(crew _veh) joinSilent _grp;
 _veh allowCrewInImmobile true;
 
 _grp enableDynamicSimulation true;

@@ -73,6 +73,36 @@ private _unitMap = createHashMapFromArray ([
 				"C_Djella_01_lxWS", .5,
 				"C_Man_smart_casual_2_F_afro", .5
 				]
+			],
+		["Inf_local",[
+				"C_Djella_01_lxWS", .5,
+				"C_Djella_02_lxWS", .5,
+				"C_Djella_03_lxWS", .5,
+				"C_Djella_04_lxWS", .5,
+				"C_Djella_05_lxWS", .5,
+				"C_Tak_02_A_lxWS", .5,
+				"C_Tak_02_B_lxWS", .5,
+				"C_Tak_02_C_lxWS", .5,
+				"C_Tak_03_A_lxWS", .5,
+				"C_Tak_03_B_lxWS", .5,
+				"C_Tak_03_C_lxWS", .5,
+				"C_Tak_01_A_lxWS", .5,
+				"C_Tak_01_B_lxWS", .5,
+				"C_Tak_01_C_lxWS", .5
+				]
+			],
+		["Car",[
+				"C_Offroad_lxWS", .5,
+				"C_Truck_02_cargo_lxWS", .5,
+				"C_Truck_02_flatbed_lxWS", .5,
+				"C_Kart_01_Red_F", .1,
+				"C_Offroad_02_unarmed_F", .5,
+				"C_Offroad_01_repair_F", .5,
+				"C_Tractor_01_F", .5,
+				"C_Van_02_service_F", .5,
+				"C_Van_02_vehicle_F", .5,
+				"C_Van_02_transport_F", .5
+				]
 			]
 		]	
 	]

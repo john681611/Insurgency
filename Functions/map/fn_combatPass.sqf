@@ -10,6 +10,7 @@ _count_sub_objectives = {
 private _activeZoneLimit = 15;
 if(isNil "activeZones") then {
 	activeZones = createHashMap;
+	activeZonesCivs = createHashMap;
 };
 {
 	if({alive _x} count (units _y) == 0 && (_x call _count_sub_objectives) == 0) then {
@@ -63,10 +64,30 @@ _needsDeactivatingKeys = (keys activeZones) select {
 		_unit addHeadgear "H_Beret_CSAT_01_F";
 		_unit spawn TR_fnc_addHostileIntelAction;
 	};
+
+	if((count ((getMarkerPos _x) nearRoads 50)) > 0 && random 10 < 3) then {
+		_veh = [_mkr, 50,(["VC", "Car"] call TR_fnc_getUnits), true] call TR_fnc_spawnVehicle;
+		(crew _veh) joinSilent _grp;
+	};
+
 	[units _grp] remoteExec ["TR_fnc_addToAllCurators", 2];
 	[_grp, (getMarkerPos _x) , 50, 3, 0.1, 0.1, true] call CBAEXT_fnc_taskDefend;
 	// _x setMarkerBrush "Cross"; //DEBUG
 	activeZones set [_x, _grp];
+
+	if(random 10 < 3) then {
+		_grpCiv = createGroup [civilian, false];
+		for "_i" from 1 to (ceil (random 5)) do {
+			_grpCiv createUnit [(["CIV", "Inf_local"] call TR_fnc_getUnits), getMarkerPos _mkr, [], 50, "NONE"];
+		};
+		if((count ((getMarkerPos _x) nearRoads 50)) > 0 && random 10 < 3) then {
+			_vehCiv = [_mkr, 50,(["CIV", "Car"] call TR_fnc_getUnits), true, civilian] call TR_fnc_spawnVehicle;
+			(crew _vehCiv) joinSilent _grpCiv;
+		};
+		[units _grpCiv] remoteExec ["TR_fnc_addToAllCurators", 2];
+		[_grpCiv, (getMarkerPos _x) , 50, 3, 0.1, 0.4, true] call CBAEXT_fnc_taskDefend;
+		activeZonesCivs set [_x, _grpCiv];
+	};
 	
 } forEach _needActivating;
 
@@ -79,5 +100,13 @@ _needsDeactivatingKeys = (keys activeZones) select {
 	deleteGroup _grp;
 	// _x setMarkerBrush "Solid"; //DEBUG
 	activeZones deleteAt _x;
+
+	if(_x in activeZonesCivs) then {
+		_grpCiv = activeZonesCivs get _x;
+		{
+			deleteVehicle _x;	
+		} forEach units _grpCiv;
+		deleteGroup _grpCiv;
+	};
 	
 } forEach _needsDeactivatingKeys;
