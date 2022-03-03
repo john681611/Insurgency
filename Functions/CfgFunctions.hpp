@@ -6,6 +6,7 @@ class IA
 		file = "Functions";
 		
 		class addToAllCurators {};
+		class createHostage {};
 		class getUnits {};
 		class getUnitsFromConfigGroup {};
 		class hideInBuilding {};
@@ -23,6 +24,7 @@ class IA
 		class createTunnel{};
 		class spawnSubObjective{};
 		class update_hostage_task{};
+
 	};
 
 	class MAP
@@ -58,6 +60,13 @@ class IA
 		file = "Functions\player";
 		class runMarker{};
 		class initEarplugs{}
+	}
+
+	class PERSISTANCE
+	{
+		file = "Functions\persistance";
+		class saveState{};
+		class loadState{}
 	}
 };
 

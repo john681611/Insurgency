@@ -7,4 +7,5 @@ _message = format ["Recover %1 Hostages", {captive (_x select 0)} count hostages
 		""
 	]
 ] call BIS_fnc_taskSetDescription;
-["TaskUpdated", ["", _message]] remoteExec ["BIS_fnc_showNotification", 0];	
+["TaskUpdated", ["", _message]] remoteExec ["BIS_fnc_showNotification", 0];
+[] call TR_fnc_saveState;

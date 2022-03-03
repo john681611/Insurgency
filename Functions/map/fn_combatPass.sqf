@@ -21,6 +21,7 @@ if(isNil "activeZones") then {
 		};
 		deleteGroup _y;
 		activeZones deleteAt _x;
+		[] call TR_fnc_saveState;
 	}
 } forEach activeZones;
 
