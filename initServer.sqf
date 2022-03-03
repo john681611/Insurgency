@@ -3,6 +3,10 @@ hostages = [];
 savedhostagesCount = 0;
 
 subObjectives = createHashMap;
+if("RESETSAVE" call BIS_fnc_getParamValue == 1) then {
+	profilenamespace setVariable [(format["InsurgencySave%1",worldName]), nil];
+};
+
 if(isnil {profilenamespace getvariable(format["InsurgencySave%1",worldName])}) then {
 	[] call TR_fnc_getMarkers;
 	publicVariable "markers";

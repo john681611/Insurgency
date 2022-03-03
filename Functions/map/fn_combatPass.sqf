@@ -72,7 +72,11 @@ _needsDeactivatingKeys = (keys activeZones) select {
 	};
 
 	[units _grp] remoteExec ["TR_fnc_addToAllCurators", 2];
-	[_grp, (getMarkerPos _x) , 50, 3, 0.1, 0.1, true] call CBAEXT_fnc_taskDefend;
+	if(!(isnil "lambs_wp_fnc_taskCamp")) then {
+		[_grp, (getMarkerPos _x), 50, [], true, true] call lambs_wp_fnc_taskCamp;
+	} else {
+		[_grp, (getMarkerPos _x) , 50, 3, 0.1, 0.1, true] call CBAEXT_fnc_taskDefend;
+	};
 	// _x setMarkerBrush "Cross"; //DEBUG
 	activeZones set [_x, _grp];
 
@@ -86,7 +90,11 @@ _needsDeactivatingKeys = (keys activeZones) select {
 			(crew _vehCiv) joinSilent _grpCiv;
 		};
 		[units _grpCiv] remoteExec ["TR_fnc_addToAllCurators", 2];
-		[_grpCiv, (getMarkerPos _x) , 50, 3, 0.1, 0.4, true] call CBAEXT_fnc_taskDefend;
+		if(!(isnil "lambs_wp_fnc_taskCamp")) then {
+			[_grpCiv, (getMarkerPos _x), 50, [], true, true] call lambs_wp_fnc_taskCamp;
+		} else {
+			[_grpCiv, (getMarkerPos _x) , 50, 3, 0.1, 0.4, true] call CBAEXT_fnc_taskDefend;
+		};
 		activeZonesCivs set [_x, _grpCiv];
 	};
 	

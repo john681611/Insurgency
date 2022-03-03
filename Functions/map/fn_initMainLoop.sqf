@@ -18,9 +18,11 @@ while {{captive (_x select 0)} count hostages > 0} do {
 
 if(savedhostagesCount > 3) exitWith {
 	["TK1","Succeeded"] call BIS_fnc_taskSetState;
+	profilenamespace setVariable [(format["InsurgencySave%1",worldName]), nil];
 	"END1" call BIS_fnc_endMissionServer;
 };
 ["TK1","Failed"] call BIS_fnc_taskSetState;
+profilenamespace setVariable [(format["InsurgencySave%1",worldName]), nil];
 "endLose" call BIS_fnc_endMissionServer;
 
 
