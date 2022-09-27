@@ -15,15 +15,16 @@ class IA
 		class spawnUnit {};
 		class spawnVehicle {};
 		class teleport{};
-		class teleport_add_action{};
-		class spawnSupplies_add_action{};
-		class free_add_action{};
-		class free_unit{};
-		class togglePost_add_action{};
+		class teleportAddAction{};
+		class spawnSuppliesAddAction{};
+		class freeAddAction{};
+		class freeUnit{};
+		class dropHostage{};
+		class togglePostAddAction{};
 		class togglePost{};
 		class createTunnel{};
 		class spawnSubObjective{};
-		class update_hostage_task{};
+		class updateHostageTask{};
 
 	};
 

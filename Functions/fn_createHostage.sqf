@@ -8,9 +8,9 @@ private _waypoints = waypoints _grp;
 } forEach _waypoints;
 _unit setCaptive true;
 _unit switchMove "Acts_AidlPsitMstpSsurWnonDnon01";
-_unit spawn TR_fnc_free_add_action;
+_unit spawn TR_fnc_freeAddAction;
 _unit addEventHandler ["Killed", {
-	call TR_fnc_update_hostage_task;
+	call TR_fnc_updateHostageTask;
 }];
 hostages pushBack [_unit,[]];
 publicVariable "hostages";

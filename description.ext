@@ -1,10 +1,10 @@
 #include "Modules\outlw_magRepack\MagRepack_config.hpp"
 #include "Modules\CHVD\dialog.hpp"
-briefingName = "Insurgency 0.0.1";
-onLoadName = "Insurgency 0.0.1";
-overviewText = "Insurgency 0.0.1";
+briefingName = "Insurgency 0.0.2";
+onLoadName = "Insurgency 0.0.2";
+overviewText = "Insurgency 0.0.2";
 author = "INF_Mike64";
-onLoadMission = "Insurgency 0.0.1";
+onLoadMission = "Insurgency 0.0.2";
 // loadScreen = "resistance_ingame_logo.paa";
 disabledAI = 1;
 enableDebugConsole = 1;

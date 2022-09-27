@@ -6,7 +6,9 @@ params ["_faction", "_type"];
 private _unitMap = createHashMapFromArray ([
 	["VC", createHashMapFromArray [
 		["MBT",[
-			"O_SFIA_MBT_02_cannon_lxWS",.2
+			"O_SFIA_MBT_02_cannon_lxWS",.1,
+			"O_SFIA_APC_Tracked_02_cannon_lxWS",.2,
+			"O_SFIA_APC_Tracked_02_30mm_lxWS",.2
 			]
 		],
 		["Car",[
@@ -17,12 +19,15 @@ private _unitMap = createHashMapFromArray ([
 		],
 		["Inf_local",[
 				"O_Tura_defector_lxWS", .5,
+				"O_Tura_defector_lxWS", .5,
 				"O_Tura_deserter_lxWS", .5,
+				"O_Tura_enforcer_lxWS", .5,
 				"O_Tura_hireling_lxWS", .5,
+				"O_Tura_HeavyGunner_lxWS", .5,
 				"O_Tura_scout_lxWS", .5,
 				"O_Tura_medic2_lxWS", .5,
-				"O_Tura_enforcer_lxWS", .5,
 				"O_Tura_thug_lxWS", .5,
+				"O_Tura_soldier_UAV_lxWS", .5,
 				"O_Tura_watcher_lxWS", .5
 			]
 		],
@@ -30,17 +35,16 @@ private _unitMap = createHashMapFromArray ([
 			"O_SFIA_Soldier_AAA_lxWS", .5,
 			"O_SFIA_Soldier_AAT_lxWS", .5,
 			"O_SFIA_Soldier_AR_lxWS", .5,
-			"O_SFIA_crew_lxWS", .5,
-			"O_SFIA_Soldier_GL_lxWS", .5,
-			"O_SFIA_pilot_lxWS", .5,
 			"O_SFIA_medic_lxWS", .5,
-			"O_SFIA_repair_lxWS", .5,
-			"O_SFIA_soldier_lxWS", .5,
-			"O_SFIA_sharpshooter_lxWS", .5,
-			"O_SFIA_Soldier_universal_lxWS", .5,
 			"O_SFIA_exp_lxWS", .5,
+			"O_SFIA_Soldier_GL_lxWS", .5,
+			"O_SFIA_HeavyGunner_lxWS", .5,
 			"O_SFIA_soldier_aa_lxWS", .5,
 			"O_SFIA_soldier_at_lxWS", .5,
+			"O_SFIA_repair_lxWS", .5,
+			"O_SFIA_soldier_lxWS", .5,
+			"O_SFIA_soldier_lite_lxWS", .5,
+			"O_SFIA_sharpshooter_lxWS", .5,
 			"O_SFIA_Soldier_TL_lxWS", .5
 			]
 		],

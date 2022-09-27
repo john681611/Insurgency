@@ -9,7 +9,7 @@ if!(isServer) exitWith{};
 	{},													// Code executed when action starts
 	{},													// Code executed on every progress tick
 	{  
-		[_target,_caller] remoteExec ["TR_fnc_free_unit", 2];
+		[_target,_caller] remoteExec ["TR_fnc_freeUnit", 2];
 	},
 	{},													// Code executed on interrupted
 	[],													// Arguments passed to the scripts as _this select 3
