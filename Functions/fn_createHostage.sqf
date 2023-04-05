@@ -2,7 +2,7 @@ params ["_pos"];
 _grp = createGroup [civilian , false];
 _unit = _grp createUnit [(["CIV", "Inf"] call TR_fnc_getUnits), _pos, [], 50, "NONE"];
 if(!(isnil "lambs_wp_fnc_taskGarrison")) then {
-	[_grp, (pos), 50, [], true, 1] call lambs_wp_fnc_taskGarrison;
+	[_grp, (pos), 50, [], true, true, 0] call lambs_wp_fnc_taskGarrison;
 } else {
 	[_grp, (_pos) , 50, 1, false, true, true] call CBAEXT_fnc_taskDefend;
 };

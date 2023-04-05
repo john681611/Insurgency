@@ -57,7 +57,10 @@ _needsDeactivatingKeys = (keys activeZones) select {
 		_unitSet = "Inf_regional";
 	};
 	_playerCount = 3 max (15 min (count (allPlayers select {(getMarkerPos _mkr) distance _x < 500})));
-	for "_i" from 1 to _playerCount do {
+	if(count (getMarkerPos _mkr nearObjects ["Building", 50]) <= 3) then {
+		_playerCount = floor(_playerCount/2);
+	};
+	for "_i" from 0 to _playerCount do {
 		_grp createUnit [(["VC", _unitSet] call TR_fnc_getUnits), getMarkerPos _mkr, [], 50, "NONE"];
 	};
 	if(random 10 < 5) then {
@@ -73,9 +76,9 @@ _needsDeactivatingKeys = (keys activeZones) select {
 
 	[units _grp] remoteExec ["TR_fnc_addToAllCurators", 2];
 	if(!(isnil "lambs_wp_fnc_taskGarrison")) then {
-		[_grp, (getMarkerPos _x), 50, [], true] call lambs_wp_fnc_taskGarrison;
+		[_grp, (getMarkerPos _x), 50, [], true, false, 2, true] call lambs_wp_fnc_taskGarrison;
 	} else {
-		[_grp, (getMarkerPos _x) , 50, 1, 0.1, 0.5, true] call CBAEXT_fnc_taskDefend;
+		[_grp, (getMarkerPos _x) , 50, 1, 0.5, 0.7, true] call CBAEXT_fnc_taskDefend;
 	};
 	// _x setMarkerBrush "Cross"; //DEBUG
 	activeZones set [_x, _grp];
