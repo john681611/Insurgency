@@ -7,6 +7,7 @@ if(count (keys _cache) == 0 OR ("RESETMAPCACHE" call BIS_fnc_getParamValue == 1)
 	_center = [(_mapSize/2), (_mapSize/2), 0];
 	_radius = [0,0,0] distance2D _center;
 	{
+		if(!([_x] call BIS_fnc_isBuildingEnterable)) then { continue };
 		_pos = getPos _x;
 		_rounded_x = (ceil ((_pos select 0) / 100)) * 100 - 50;
 		_rounded_y = (ceil ((_pos select 1) / 100)) * 100 - 50;
