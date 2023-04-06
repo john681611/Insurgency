@@ -1,5 +1,6 @@
 factions = ["VC"];
 hostages = [];
+ammoCaches = [];
 savedhostagesCount = 0;
 
 subObjectives = createHashMap;
@@ -10,7 +11,7 @@ if("RESETSAVE" call BIS_fnc_getParamValue == 1) then {
 if(isnil {profilenamespace getvariable(format["InsurgencySave%1",worldName])}) then {
 	[] call TR_fnc_getMarkers;
 	publicVariable "markers";
-	noise = [20, "ColorOpfor", []] call TR_fnc_setRandomZonesTo;
+	noise = [30, "ColorOpfor", []] call TR_fnc_setRandomZonesTo;
 	[noise, markers, 5, "ColorOpfor", ["ColorOrange"]] spawn TR_fnc_generateAOE;
 	{_x spawn TR_fnc_spawnSubObjective;} forEach noise;
 } else {
@@ -18,6 +19,7 @@ if(isnil {profilenamespace getvariable(format["InsurgencySave%1",worldName])}) t
 };
 
 publicVariable "hostages";
+publicVariable "ammoCaches";
 publicVariable "savedhostagesCount";
 publicVariable "markers";
 
@@ -25,7 +27,7 @@ publicVariable "markers";
 _startTime = random 24;
 skipTime _startTime;
 [] spawn TR_fnc_initMainLoop;
-addMissionEventHandler ["HandleDisconnect",{deleteMarker format["%1",(_this select 2)]; deletevehicle (_this select 0)}];
+// addMissionEventHandler ["HandleDisconnect",{deleteMarker format["%1",(_this select 2)]; deletevehicle (_this select 0)}];
 systemChat "Finished setting up the map";
 
 
