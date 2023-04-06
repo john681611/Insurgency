@@ -83,7 +83,7 @@ _needsDeactivatingKeys = (keys activeZones) select {
 	if(!(isnil "lambs_wp_fnc_taskGarrison")) then {
 		[_grp, (getMarkerPos _x), 50, [], true, false, 2, true] call lambs_wp_fnc_taskGarrison;
 	} else {
-		[_grp, (getMarkerPos _x) , 50, 1, 0.5, 0.7, true] call CBAEXT_fnc_taskDefend;
+		[_grp, (getMarkerPos _x) , 50, 1, 0.1, 0.7, true] call CBAEXT_fnc_taskDefend;
 	};
 	// _x setMarkerBrush "Cross"; //DEBUG
 	activeZones set [_x, _grp];
