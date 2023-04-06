@@ -27,6 +27,24 @@ _hostage_state = [];
 } forEach (hostages select {captive (_x select 0)});
 
 
+_ammoCache_state = [];
+{
+	private _intelMarkrs = [];
+	{
+		private _hash = createHashMapFromArray [
+		['id', _x],
+		['pos', getMarkerPos _x],
+		['text', markerText _x]];
+		_intelMarkrs pushBackUnique _hash;
+		
+	} forEach (_x select 1);
+	private _hash = createHashMapFromArray [
+		['unitPos', getPos(_x select 0)],
+		['markers', _intelMarkrs]];
+	_ammoCache_state pushBackUnique _hash;
+} forEach (ammoCaches select {alive (_x select 0)});
+
+
 _subObj_state = [];
 {
 	private _subMarker = _y select 1;
@@ -42,6 +60,7 @@ profilenamespace setVariable [(format["InsurgencySave%1",worldName]), createHash
 	['markers', _markers_state],
 	['subobj', _subObj_state],
 	['hostages', _hostage_state],
+	['ammoCaches', _ammoCache_state],
 	['saved', savedhostagesCount]
 ]];
 systemChat "saved state";

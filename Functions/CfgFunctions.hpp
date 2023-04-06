@@ -25,6 +25,7 @@ class IA
 		class createTunnel{};
 		class spawnSubObjective{};
 		class updateHostageTask{};
+		class updateCacheTask{};
 
 	};
 

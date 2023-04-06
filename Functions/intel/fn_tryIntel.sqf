@@ -1,6 +1,6 @@
 params["_unit", "_range", ["_canKill", false]];
 
-_opts = hostages;
+_opts = hostages + ammoCaches;
 _diceRoll = (random 10) > 4 ;
 
 if(count _opts == 0 and _diceRoll) exitWith {
@@ -9,8 +9,7 @@ if(count _opts == 0 and _diceRoll) exitWith {
 };
 
 _choise = selectRandom _opts;
-systemChat "You find Intel on a hostage!";
-_message = "Hostage spotted";
+systemChat "You find Intel!";
 _markerCount = count (_choise select 1);
 _rangeTo = 100 max (500 - (_markerCount * 50));
 _posx = (getpos (_choise select 0) select 0) + random [_rangeTo * -1, 0, _rangeTo];
@@ -24,7 +23,6 @@ _mkr setMarkerTextLocal format ["%1m", _rangeTo];
 _mkr setMarkerSizeLocal [0.7,0.7];
 _mkr setMarkerAlpha 1;
 (_choise select 1) pushBack _mkr;
-publicVariable "hostages";
 
 
 _unit setVariable ["notSearched", false, true];

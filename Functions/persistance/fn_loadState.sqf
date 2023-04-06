@@ -29,6 +29,31 @@ private _mrker = (_saveMap get 'markers') select _i;
 	} forEach (_x get 'markers');
 } forEach  (_saveMap get 'hostages');
 
+{
+	_veh = [(_x get 'unitPos'), 50,(["VC", "Supply"] call TR_fnc_getUnits), true] call TR_fnc_spawnVehicle;
+	_veh addEventHandler ["Killed", {
+		params ["_unit", "_killer", "_instigator", "_useEffects"];
+		"Bo_GBU12_LGB" createVehicle (getpos _unit);
+		ammoCaches deleteAt (ammoCaches find _unit);
+		publicVariable "ammoCaches";
+		call TR_fnc_updateCacheTask;
+	}];
+	ammoCaches pushBack [_veh,[]];
+	publicVariable "ammoCaches";
+	{
+		_mkr = createMarker [_x get 'id', _x get 'pos'];
+		_mkr setMarkerColorLocal "ColorCIV";
+		_mkr setMarkerTypeLocal "hd_dot";
+		_mkr setMarkerTextLocal (_x get 'text');
+		_mkr setMarkerSizeLocal [0.7,0.7];
+		_mkr setMarkerAlpha 1;
+		_arrayLength = count ammoCaches;
+		(ammoCaches select _arrayLength) pushBack _mkr;
+		publicVariable "ammoCaches";
+		
+	} forEach (_x get 'markers');
+} forEach  (_saveMap get 'ammoCaches');
+
 
 {
 	private _subObjMkr = createMarker [_x get 'id', _x get 'pos'];
@@ -53,19 +78,11 @@ private _mrker = (_saveMap get 'markers') select _i;
 		_veh = [_mkr, 50,(["VC", "Arty"] call TR_fnc_getUnits), true] call TR_fnc_spawnVehicle;
 		subObjectives set [_mkr, [(crew _veh) + [_veh], _subObjMkr]];
 	};
-
-	if(_type == "o_Ordnance") then {
-		_subObjMkr setMarkerType "o_Ordnance";
-		_veh = [_mkr, 50,(["VC", "Supply"] call TR_fnc_getUnits), true] call TR_fnc_spawnVehicle;
-		_veh addEventHandler ["Killed", {
-			params ["_unit", "_killer", "_instigator", "_useEffects"];
-			"Bo_GBU12_LGB" createVehicle (getpos _unit);
-		}];
-		subObjectives set [_mkr, [(crew _veh) + [_veh], _subObjMkr]];
-	};
 	
 } forEach (_saveMap get 'subobj');
 
 savedhostagesCount = _saveMap get 'saved';
 
+call TR_fnc_updateHostageTask;
+call TR_fnc_updateCacheTask;
 systemChat "loaded state";
