@@ -11,7 +11,7 @@ if(count ammoCaches < 10) exitWith {
 	_veh = [_mkr, 50,(["VC", "Supply"] call TR_fnc_getUnits), true] call TR_fnc_spawnVehicle;
 	_veh addEventHandler ["Killed", {
 		params ["_unit", "_killer", "_instigator", "_useEffects"];
-		"Bo_GBU12_LGB" createVehicle (getpos _unit);
+		(selectRandom  ["Bomb_03_F" ,"Bo_GBU12_LGB"]) createVehicle (getpos _unit);
 		ammoCaches deleteAt (ammoCaches find _unit);
 		publicVariable "ammoCaches";
 		call TR_fnc_updateCacheTask;
