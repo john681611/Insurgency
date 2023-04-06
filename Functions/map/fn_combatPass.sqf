@@ -11,6 +11,7 @@ private _activeZoneLimit = 15;
 if(isNil "activeZones") then {
 	activeZones = createHashMap;
 	activeZonesCivs = createHashMap;
+	cooldownZones = createHashMap
 };
 {
 	if({alive _x} count (units _y) == 0 && (_x call _count_sub_objectives) == 0) then {
@@ -21,7 +22,11 @@ if(isNil "activeZones") then {
 		};
 		deleteGroup _y;
 		activeZones deleteAt _x;
-		[] call TR_fnc_saveState;
+		if("HOLDGROUND" call BIS_fnc_getParamValue == 1) then {
+			[] call TR_fnc_saveState;
+		} else {
+			cooldownZones set [_x, 300];
+		}
 	}
 } forEach activeZones;
 
@@ -122,3 +127,15 @@ _needsDeactivatingKeys = (keys activeZones) select {
 	};
 	
 } forEach _needsDeactivatingKeys;
+
+{
+	private _mkr = _x;
+	if(_y > 0) then {
+		cooldownZones set [_x, _y -3]
+	} else {
+		private _minDist = (selectMin (allPlayers apply {_x distance2D (getMarkerPos _mkr)}));
+		if(_minDist > 500) then {
+			_x setMarkerColor "ColorOpfor";
+		};
+	};
+} forEach cooldownZones;
