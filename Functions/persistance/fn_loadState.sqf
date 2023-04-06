@@ -33,11 +33,12 @@ private _mrker = (_saveMap get 'markers') select _i;
 	_veh = [(_x get 'unitPos'), 50,(["VC", "Supply"] call TR_fnc_getUnits), true] call TR_fnc_spawnVehicle;
 	_veh addEventHandler ["Killed", {
 		params ["_unit", "_killer", "_instigator", "_useEffects"];
-		"Bo_GBU12_LGB" createVehicle (getpos _unit);
+		(selectRandom  ["Bomb_03_F" ,"Bo_GBU12_LGB"]) createVehicle (getpos _unit);
 		ammoCaches deleteAt (ammoCaches find _unit);
 		publicVariable "ammoCaches";
 		call TR_fnc_updateCacheTask;
 	}];
+	[(_x get 'unitPos'), 50, [_veh]] call TR_fnc_hideInBuilding;
 	ammoCaches pushBack [_veh,[]];
 	publicVariable "ammoCaches";
 	{
