@@ -1,4 +1,5 @@
-_message = format ["Destroy %1 Caches", {alive (_x select 0)} count ammoCaches];
+_cacheCount = {alive (_x select 0)} count ammoCaches;
+_message = format ["Destroy %1 Caches", _cacheCount];
 [
 	"TK2",
 	[
@@ -7,5 +8,12 @@ _message = format ["Destroy %1 Caches", {alive (_x select 0)} count ammoCaches];
 		""
 	]
 ] call BIS_fnc_taskSetDescription;
-["TaskUpdated", ["", _message]] remoteExec ["BIS_fnc_showNotification", 0];
+
+if(_cacheCount == 0) then {
+	["TK2","Succeeded"] call BIS_fnc_taskSetState;
+	["TaskSucceeded", ["", "Ammo caches destroyed"]] remoteExec ["BIS_fnc_showNotification", 0];
+} else {
+	["TaskUpdated", ["", _message]] remoteExec ["BIS_fnc_showNotification", 0];
+};
+
 [] call TR_fnc_saveState;
