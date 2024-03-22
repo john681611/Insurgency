@@ -139,3 +139,10 @@ _needsDeactivatingKeys = (keys activeZones) select {
 		};
 	};
 } forEach cooldownZones;
+
+{
+	_hostage = _x select 0;
+	if (alive _hostage && _hostage distance2D (getMarkerPos "respawn_west") < 50) then {
+		[_hostage] call TR_fnc_dropHostage;
+	};
+} forEach hostages;
