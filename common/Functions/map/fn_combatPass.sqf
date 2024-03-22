@@ -52,7 +52,6 @@ if (count activeZones < _activeZoneLimit) then {
 			} count activeAreaMarkers;
 			if (_nehiborsCount > 4) then {
 				_dist = 500 - (100 * (_nehiborsCount - 4));
-				systemChat format["Marker using smaller distance: %1", _dist];
 				_activate = _minDist < _dist;
 			};
 		};
