@@ -17,6 +17,7 @@ private _unitMap = createHashMapFromArray ([
 			"O_Tura_Offroad_armor_armed_lxWS", .5
 			]
 		],
+		["Inf_officer", ["O_SFIA_officer_lxWS", .5]],
 		["Inf_local",[
 				"O_Tura_defector_lxWS", .5,
 				"O_Tura_defector_lxWS", .5,
@@ -69,7 +70,7 @@ private _unitMap = createHashMapFromArray ([
 		]
 	],
 	["CIV", createHashMapFromArray [
-		["Inf",[
+		["Inf_Hostage",[
 				"C_Journalist_lxWS", .5,
 				"C_Tak_03_A_lxWS", .5,
 				"C_Tak_01_B_lxWS", .5,

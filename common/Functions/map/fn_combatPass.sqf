@@ -90,7 +90,7 @@ _needsDeactivatingKeys = (keys activeZones) select {
 		_grp createUnit [(["VC", _unitSet] call TR_fnc_getUnits), getMarkerPos _mkr, [], 50, "NONE"];
 	};
 	if (random 10 < 5) then {
-		_unit = _grp createUnit ["O_SFIA_officer_lxWS", getMarkerPos _mkr, [], 50, "NONE"];
+		_unit = _grp createUnit [(["VC", "Inf_officer"] call TR_fnc_getUnits), getMarkerPos _mkr, [], 50, "NONE"];
 		_unit addHeadgear "H_Beret_CSAT_01_F";
 		_unit spawn TR_fnc_addHostileIntelAction;
 	};
