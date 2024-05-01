@@ -51,6 +51,7 @@ class IA
 	class INTEL
 	{
 		file = "Functions\intel";
+		class giveIntel{};
 		class tryIntel{};
 		class addHostileIntelAction{};
 		class addCivIntelAction{};
