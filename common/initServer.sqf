@@ -14,6 +14,8 @@ if(isnil {profilenamespace getvariable(format["InsurgencySave%1",worldName])}) t
 	noise = [30, "ColorOpfor", []] call TR_fnc_setRandomZonesTo;
 	[noise, markers, 5, "ColorOpfor", ["ColorOrange"]] spawn TR_fnc_generateAOE;
 	{_x spawn TR_fnc_spawnSubObjective;} forEach noise;
+	waitUntil { (count hostages) > 0 && (count ammoCaches) > 0};
+	[(selectRandom (hostages + ammoCaches))]  call TR_fnc_giveIntel; 
 } else {
 	[] call TR_fnc_loadState;
 };
