@@ -149,13 +149,14 @@ _needsDeactivatingKeys = (keys activeZones) select {
 
 {
 	private _mkr = _x;
+	private _mkrPos = (getMarkerPos _mkr);
 	if (_y > 0) then {
 		cooldownZones set [_x, _y -3]
 	} else {
 		private _minDist = (selectMin (allPlayers apply {
-			_x distance2D (getMarkerPos _mkr)
+			_x distance2D _mkrPos
 		}));
-		if (_minDist > ("HOLDGROUND" call BIS_fnc_getParamValue)) then {
+		if (_minDist > ("HOLDGROUND" call BIS_fnc_getParamValue) && (count (_mkrPos nearObjects ["ACE_Rallypoint_West", 150])) == 0) then {
 			_x setMarkerColor "ColorOpfor";
 		};
 	};
