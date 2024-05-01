@@ -23,7 +23,7 @@ class EditorData
 	};
 };
 binarizationWanted=0;
-sourceName="co_36_insurgency-0-1-5-bootcamp";
+sourceName="co_36_insurgency-0-1-6-bootcamp";
 addons[]=
 {
 	"A3_Ui_F",
