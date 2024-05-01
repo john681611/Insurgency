@@ -26,7 +26,7 @@ if (isNil "activeZones") then {
 		};
 		deleteGroup _y;
 		activeZones deleteAt _x;
-		if ("HOLDGROUND" call BIS_fnc_getParamValue == 1) then {
+		if ("HOLDGROUND" call BIS_fnc_getParamValue == -1) then {
 			[] call TR_fnc_saveState;
 		} else {
 			cooldownZones set [_x, 300];
@@ -155,7 +155,7 @@ _needsDeactivatingKeys = (keys activeZones) select {
 		private _minDist = (selectMin (allPlayers apply {
 			_x distance2D (getMarkerPos _mkr)
 		}));
-		if (_minDist > 500) then {
+		if (_minDist > ("HOLDGROUND" call BIS_fnc_getParamValue)) then {
 			_x setMarkerColor "ColorOpfor";
 		};
 	};

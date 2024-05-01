@@ -55,26 +55,23 @@ class Params
 {
 	class RESETMAPCACHE
 	{
-		title = "Reset Map Cache"; // Param name visible in the list
-		values[] = {false,true}; // Values; must be integers; has to have the same number of elements as 'texts'
-		texts[] = {"False","True"}; // Description of each selectable item
-		default = false; // Default value; must be listed in 'values' array, otherwise 0 is used
-               // Default values that are not whole numbers do not work. Param will default to 0 (or 1 if defined)
+		title = "Reset Map Cache"; 
+		values[] = {false,true};
+		texts[] = {"False","True"}; 
+		default = false; 
 	};
 	class RESETSAVE
 	{
-		title = "Reset Save"; // Param name visible in the list
-		values[] = {false,true}; // Values; must be integers; has to have the same number of elements as 'texts'
-		texts[] = {"False","True"}; // Description of each selectable item
-		default = false; // Default value; must be listed in 'values' array, otherwise 0 is used
-               // Default values that are not whole numbers do not work. Param will default to 0 (or 1 if defined)
+		title = "Reset Save"; 
+		values[] = {false,true};
+		texts[] = {"False","True"}; 
+		default = false; 
 	};
 	class HOLDGROUND
 	{
-		title = "Hold Ground"; // Param name visible in the list
-		values[] = {0, 1}; // Values; must be integers; has to have the same number of elements as 'texts'
-		texts[] = {"False","True"}; // Description of each selectable item
-		default = 0; // Default value; must be listed in 'values' array, otherwise 0 is used
-               // Default values that are not whole numbers do not work. Param will default to 0 (or 1 if defined)
+		title = "Hold Ground distance"; 
+		values[] = {500, 800, 1000, 1500, 2000, -1};
+		texts[] = {"500m","800m" "1km", "1.5km", "2km", "Perminant"}; 
+		default = 800; 
 	};
 };
